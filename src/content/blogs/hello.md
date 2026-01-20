@@ -1,14 +1,11 @@
 ---
 title: "My First Blog Post"
-pubDate: "Jun 01 2026"
+pubDate: January 21, 2026
 description: "This is the first post of my new Astro blog."
 heroImage: "https://docs.astro.build/assets/rose.webp"
-tags: ["astro", "blogging", "learning in public"]
 ---
 
 # My First Blog Post
-
-Published on: 2026-01-21
 
 Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
 
