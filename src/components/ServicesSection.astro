@@ -1,0 +1,62 @@
+---
+import { ArrowUpRight } from 'lucide-react';
+---
+
+<section class="max-w-7xl mx-auto px-6 py-20 bg-white rounded-[3rem] my-12 relative overflow-hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+    <h2 class="text-3xl md:text-5xl font-semibold leading-tight">
+      We Tried To Provide You <br />
+      With All Global Banking <br />
+      Services
+    </h2>
+    
+    <div class="flex flex-col items-start justify-center space-y-6">
+       <p class="text-gray-500 text-sm md:text-base max-w-md">
+         We Make Is Easy Effort To Ensure That You Have Access To A 
+         Comprehensive Range Of Global Banking Services. Our Aim Was To 
+         Provide You With A Seamless Banking Experience That Caters To Your 
+         Financial Needs Regardless Of Your Location.
+       </p>
+       <a href="#" class="px-6 py-3 bg-black text-white rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-gray-800 transition-colors">
+          Explore More
+          <ArrowUpRight size={16} />
+       </a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    {/* Service 1 */}
+    <div class="p-6 bg-gray-50 rounded-2xl text-center hover:bg-white hover:shadow-lg transition-all duration-300">
+        <div class="w-16 h-16 mx-auto mb-4 bg-gray-200 rounded-full flex items-center justify-center">
+            <div class="w-8 h-8 rounded-full border-2 border-gray-400"></div>
+        </div>
+        <h3 class="font-semibold text-sm">Simultaneous And Fast <br /> Operations</h3>
+    </div>
+
+    {/* Service 2 */}
+    <div class="p-6 bg-gray-50 rounded-2xl text-center hover:bg-white hover:shadow-lg transition-all duration-300">
+        <div class="w-16 h-16 mx-auto mb-4 bg-gray-200 rounded-full flex items-center justify-center">
+             <div class="w-10 h-6 border-2 border-gray-400 rounded-lg"></div>
+        </div>
+        <h3 class="font-semibold text-sm">Can Be Connected To All <br /> Accounts</h3>
+    </div>
+
+    {/* Service 3 */}
+    <div class="p-6 bg-gray-50 rounded-2xl text-center hover:bg-white hover:shadow-lg transition-all duration-300">
+        <div class="w-16 h-16 mx-auto mb-4 bg-gray-200 rounded-full flex items-center justify-center">
+             <div class="w-8 h-8 rounded-full border border-gray-400 flex items-center justify-center">
+                 <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+             </div>
+        </div>
+        <h3 class="font-semibold text-sm">Strong And Advanced <br /> Encryption</h3>
+    </div>
+
+     {/* Service 4 */}
+    <div class="p-6 bg-gray-50 rounded-2xl text-center hover:bg-white hover:shadow-lg transition-all duration-300">
+        <div class="w-16 h-16 mx-auto mb-4 bg-gray-200 rounded-full flex items-center justify-center">
+             <div class="w-8 h-8 border border-gray-400 rounded-sm"></div>
+        </div>
+        <h3 class="font-semibold text-sm">Comprehensive Electronic <br /> Banking Services</h3>
+    </div>
+  </div>
+</section>
