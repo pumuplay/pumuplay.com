@@ -9,10 +9,25 @@ import { Search } from 'lucide-react';
   </div>
 
   <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-    <a href="/" class="text-secondary">Home</a>
-    <a href="/projects" class="hover:text-black transition-colors">Projects</a>
-    <a href="/blogs" class="hover:text-black transition-colors">Blogs</a>
-    <a href="/about" class="hover:text-black transition-colors">About Us</a>
+    {
+      [
+        { name: 'Home', href: '/' },
+        { name: 'Projects', href: '/projects' },
+        { name: 'Blogs', href: '/blogs' },
+        { name: 'About Us', href: '/about' },
+      ].map((link) => {
+        const isActive = Astro.url.pathname === link.href || (link.href !== '/' && Astro.url.pathname.startsWith(link.href));
+        return (
+          <a
+            href={link.href}
+            class={isActive ? "text-secondary" : "hover:text-black transition-colors"}
+          >
+            {link.name}
+          </a>
+        );
+      })
+    }
+      
   </div>
 
   <!-- <div class="flex items-center gap-4">
