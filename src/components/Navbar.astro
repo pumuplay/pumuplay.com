@@ -1,21 +1,24 @@
 ---
-import { Search } from 'lucide-react';
+import { Search, Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Blogs', href: '/blogs' },
+  { name: 'About', href: '/about' },
+];
 ---
 
-<nav class="flex items-center justify-between py-6 px-6 max-w-7xl mx-auto">
-  <a href="/" class="flex items-center gap-2">
+<nav class="flex items-center justify-between py-6 px-6 max-w-7xl mx-auto relative z-40">
+  <a href="/" class="flex items-center gap-2 z-50 relative">
     <img src="/logo.png" alt="PumuPlay Logo" class="w-8 h-8 rounded-full" />
     <span class="font-bold text-lg tracking-tight">PumuPlay</span>
   </a>
 
+  <!-- Desktop Menu -->
   <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
     {
-      [
-        { name: 'Home', href: '/' },
-        { name: 'Projects', href: '/projects' },
-        { name: 'Blogs', href: '/blogs' },
-        { name: 'About', href: '/about' },
-      ].map((link) => {
+      navLinks.map((link) => {
         const isActive = Astro.url.pathname === link.href || (link.href !== '/' && Astro.url.pathname.startsWith(link.href));
         return (
           <a
@@ -27,19 +30,62 @@ import { Search } from 'lucide-react';
         );
       })
     }
-      
   </div>
 
-  <!-- <div class="flex items-center gap-4">
-    <button class="p-2 hover:bg-gray-200 rounded-full transition-colors" aria-label="Search">
-      <Search size={20} />
-    </button>
-    <a href="#" class="px-5 py-2 border border-gray-300 rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors">
-      Sign In
-    </a>
-  </div> -->
+  <!-- Mobile Menu Button -->
+  <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none z-50 relative" aria-label="Toggle menu">
+    <Menu size={24} />
+  </button>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="flex flex-col gap-8 text-2xl font-medium text-gray-600 text-center">
+      {
+        navLinks.map((link) => {
+          const isActive = Astro.url.pathname === link.href || (link.href !== '/' && Astro.url.pathname.startsWith(link.href));
+          return (
+            <a
+              href={link.href}
+              class={isActive ? "text-secondary" : "hover:text-black transition-colors"}
+            >
+              {link.name}
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
 </nav>
 
 <script>
-  // Mobile menu toggle logic can go here if needed later
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = menuToggle?.querySelector('svg');
+  let isMenuOpen = false;
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      
+      // Toggle menu visibility
+      if (isMenuOpen) {
+        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+        // Optional: Change icon to X (handled structurally or just keep it simple first)
+        // Since we didn't put both icons in the button, let's just rely on the overlay.
+        // Actually, let's swap the icon if possible or just keep it simple.
+        // The user didn't ask for icon animation, but X is better UX.
+      } else {
+        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
+
+    // Close menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        isMenuOpen = false;
+        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+      });
+    });
+  }
 </script>
