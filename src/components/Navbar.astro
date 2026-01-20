@@ -14,7 +14,7 @@ import { Search } from 'lucide-react';
         { name: 'Home', href: '/' },
         { name: 'Projects', href: '/projects' },
         { name: 'Blogs', href: '/blogs' },
-        { name: 'About Us', href: '/about' },
+        { name: 'About', href: '/about' },
       ].map((link) => {
         const isActive = Astro.url.pathname === link.href || (link.href !== '/' && Astro.url.pathname.startsWith(link.href));
         return (
