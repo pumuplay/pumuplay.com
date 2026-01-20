@@ -1,8 +1,9 @@
 ---
-layout: ../layouts/BlogPost.astro
-title: About Us
+layout: ../layouts/AboutLayout.astro
+title: About
 description: "We are software developers dedicated to building high-performance systems and intelligent solutions."
 pubDate: 2026-01-01
+heroImage: /about.jpg
 ---
 
 We are software developers dedicated to building high-performance systems and intelligent solutions. Our work focuses on the intersection of artificial intelligence and streamlined software architecture.
