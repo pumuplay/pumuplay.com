@@ -26,14 +26,16 @@ import saas from "../assets/services/saas.svg";
           reduce operational costs while boosting productivity through
           intelligent technology designed for your success.
         </p>
-        <a
-          href="/projects"
-          target="_blank"
-          class="px-6 py-3 bg-black text-white rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-gray-800 transition-colors"
-        >
-          Explore More
-          <ArrowUpRight size={16} />
-        </a>
+        <HoverBounce client:visible>
+            <a
+              href="/projects"
+              target="_blank"
+              class="px-6 py-3 bg-black text-white rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-gray-800 transition-colors"
+            >
+              Explore More
+              <ArrowUpRight size={16} />
+            </a>
+        </HoverBounce>
       </div>
     </div>
   </FadeIn>
