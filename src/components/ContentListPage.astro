@@ -1,0 +1,76 @@
+---
+import BaseHead from './BaseHead.astro';
+import Footer from './Footer.astro';
+import Navbar from './Navbar.astro';
+import ContentCard from './ContentCard.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+interface ContentItem {
+    id: string;
+    data: {
+        title: string;
+        pubDate: Date;
+        heroImage?: ImageMetadata | string;
+        description?: string;
+    };
+}
+
+interface Props {
+    title: string;
+    subtitle: string;
+    basePath: string;
+    items: ContentItem[];
+    pageTitle?: string;
+    pageDescription?: string;
+}
+
+const { 
+    title, 
+    subtitle, 
+    basePath, 
+    items,
+    pageTitle = SITE_TITLE,
+    pageDescription = SITE_DESCRIPTION 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={pageTitle} description={pageDescription} />
+    </head>
+    <body class="bg-[#f2f2f5] text-gray-900 selection:bg-primary selection:text-black min-h-screen flex flex-col">
+        <div class="w-full">
+            <Navbar />
+        </div>
+        <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <section>
+                <div class="mb-12 text-center">
+                    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">{title}</h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
+                </div>
+                {items.length > 0 ? (
+                    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {items.map((item) => (
+                            <ContentCard
+                                title={item.data.title}
+                                href={`${basePath}${item.id}/`}
+                                pubDate={item.data.pubDate}
+                                heroImage={item.data.heroImage}
+                                description={item.data.description}
+                            />
+                        ))}
+                    </ul>
+                ) : (
+                    <div class="text-center py-16">
+                        <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                        <p class="text-gray-500 text-lg">No content yet. Check back soon!</p>
+                    </div>
+                )}
+            </section>
+        </main>
+        <Footer />
+    </body>
+</html>
