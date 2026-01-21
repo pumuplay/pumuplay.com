@@ -13,9 +13,9 @@ interface Props {
 const { title, href, pubDate, heroImage, description } = Astro.props;
 ---
 
-<li class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 ease-in-out hover:-translate-y-1 overflow-hidden group">
-    <a href={href} class="block h-full">
-        <div class="relative aspect-[16/9] overflow-hidden">
+<article class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 ease-in-out hover:-translate-y-1 overflow-hidden group h-full">
+    <a href={href} class="block h-full flex flex-col">
+        <div class="relative aspect-[16/9] overflow-hidden shrink-0">
             {heroImage ? (
                 typeof heroImage === 'string' ? (
                     <Image 
@@ -40,7 +40,7 @@ const { title, href, pubDate, heroImage, description } = Astro.props;
                 </div>
             )}
         </div>
-        <div class="p-6">
+        <div class="p-6 flex flex-col flex-grow">
             <p class="text-sm text-gray-500 mb-2 font-medium">
                 <FormattedDate date={pubDate} />
             </p>
@@ -52,4 +52,4 @@ const { title, href, pubDate, heroImage, description } = Astro.props;
             )}
         </div>
     </a>
-</li>
+</article>

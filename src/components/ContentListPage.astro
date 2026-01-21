@@ -3,6 +3,7 @@ import BaseHead from './BaseHead.astro';
 import Footer from './Footer.astro';
 import Navbar from './Navbar.astro';
 import ContentCard from './ContentCard.astro';
+import FadeInItem from './ui/FadeInItem';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 interface ContentItem {
@@ -51,14 +52,16 @@ const {
                 </div>
                 {items.length > 0 ? (
                     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {items.map((item) => (
-                            <ContentCard
-                                title={item.data.title}
-                                href={`${basePath}${item.id}/`}
-                                pubDate={item.data.pubDate}
-                                heroImage={item.data.heroImage}
-                                description={item.data.description}
-                            />
+                        {items.map((item, index) => (
+                            <FadeInItem client:visible delay={index * 0.1}>
+                                <ContentCard
+                                    title={item.data.title}
+                                    href={`${basePath}${item.id}/`}
+                                    pubDate={item.data.pubDate}
+                                    heroImage={item.data.heroImage}
+                                    description={item.data.description}
+                                />
+                            </FadeInItem>
                         ))}
                     </ul>
                 ) : (
