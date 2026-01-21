@@ -2,27 +2,33 @@
 import { MoveRight } from 'lucide-react';
 import { Image } from 'astro:assets';
 import mcp from '../assets/mcp.svg';
+import FadeIn from './ui/FadeIn';
+import HoverBounce from './ui/HoverBounce';
 ---
 
 <section class="max-w-7xl mx-auto px-6 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
   <div class="space-y-8">
-    <h1 class="text-5xl md:text-7xl font-semibold leading-[1.1] tracking-tight text-gray-900">
-      PumuPlay <br />
-      For A Modern SMEs
-    </h1>
-    
-    <p class="text-gray-500 max-w-md leading-relaxed text-sm md:text-base">
-        Empowering SMEs with cutting-edge automation, tailored micro SaaS, and autonomous agentic agents. Reduce operational overhead and unlock peak productivity for the modern world.
-    </p>
+    <FadeIn client:load>
+      <h1 class="text-5xl md:text-7xl font-semibold leading-[1.1] tracking-tight text-gray-900 mb-8">
+        PumuPlay <br />
+        For A Modern SMEs
+      </h1>
+      
+      <p class="text-gray-500 max-w-md leading-relaxed text-sm md:text-base mb-8">
+          Empowering SMEs with cutting-edge automation, tailored micro SaaS, and autonomous agentic agents. Reduce operational overhead and unlock peak productivity for the modern world.
+      </p>
 
-    <div class="flex items-center gap-6">
-      <a href="#services-section" class="group px-8 py-3 bg-primary rounded-full text-black font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity">
-        Discover Now
-        <span class="bg-black/10 rounded-full p-1 group-hover:bg-black/20 transition-colors">
-             <MoveRight size={14} />
-        </span>
-      </a>
-    </div>
+      <div class="flex items-center gap-6">
+        <HoverBounce client:load>
+          <a href="#services-section" class="group px-8 py-3 bg-primary rounded-full text-black font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity">
+            Discover Now
+            <span class="bg-black/10 rounded-full p-1 group-hover:bg-black/20 transition-colors">
+                 <MoveRight size={14} />
+            </span>
+          </a>
+        </HoverBounce>
+      </div>
+    </FadeIn>
   </div>
 
   <div class="relative h-[400px] md:h-[500px] w-full flex items-center justify-center">
@@ -31,10 +37,14 @@ import mcp from '../assets/mcp.svg';
     <div class="absolute bottom-10 left-10 w-32 h-32 bg-secondary/20 rounded-full blur-3xl"></div>
 
     <!-- The 3D Card Representation -->
-    <Image 
-        src={mcp} 
-        alt="PumuPlay Dashboard" 
-        class="relative w-full max-w-md z-10 drop-shadow-2xl" 
-    />
+    <FadeIn delay={0.2} client:load>
+      <HoverBounce client:load>
+        <Image 
+            src={mcp} 
+            alt="PumuPlay Dashboard" 
+            class="relative w-full max-w-md z-10 drop-shadow-2xl" 
+        />
+      </HoverBounce>
+    </FadeIn>
   </div>
 </section>
