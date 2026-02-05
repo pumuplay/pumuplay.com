@@ -1,46 +1,46 @@
 ---
-title: "Getting Started with Testcontainers"
-description: "Everything you need to know to get started with Testcontainers for reliable integration testing."
+title: "เริ่มต้นใช้งานกับ Testcontainers"
+description: "ทุกสิ่งที่คุณต้องรู้เพื่อเริ่มต้นใช้งาน Testcontainers สำหรับการทดสอบ Integration ที่เชื่อถือได้"
 pubDate: 2026-02-05
 heroImage: "https://testcontainers.com/getting-started/images/test-workflow.png"
 ---
 
-**Testcontainers** is a library that provides easy and lightweight APIs for bootstrapping local development and test dependencies with real services wrapped in Docker containers. Using Testcontainers, you can write tests that depend on the same services you use in production without mocks or in-memory services.
+**Testcontainers** เป็นไลบรารีที่ให้บริการ API ที่ง่ายและเบาสำหรับการเตรียม Dependency ในการพัฒนาและทดสอบแบบ Local ด้วยบริการจริงที่ถูกห่อหุ้มใน Docker containers การใช้ Testcontainers ช่วยให้คุณเขียนชุดทดสอบที่พึ่งพาบริการเดียวกับที่คุณใช้บน Production ได้ โดยไม่ต้องใช้ Mock หรือ In-memory services
 
-## What problems does Testcontainers solve?
+## Testcontainers แก้ปัญหาอะไร?
 
-Cloud-native infrastructure and microservices have made local development and testing challenging. Instead of relying on in-memory databases or mocks, which may behave differently from production services, Testcontainers allows you to run your application dependencies (databases, message brokers, etc.) in Docker containers. This ensures reliable and repeatable tests.
+Infrastructure แบบ Cloud-native และ Microservices ทำให้การพัฒนาและทดสอบแบบ Local เป็นเรื่องท้าทาย แทนที่จะพึ่งพา Database แบบ In-memory หรือ Mock ซึ่งอาจทำงานต่างจากบริการจริงบน Production Testcontainers ช่วยให้คุณรัน Dependency ของแอปพลิเคชัน (เช่น Database, Message Broker ฯลฯ) ใน Docker containers ได้ ซึ่งช่วยให้การทดสอบมีความน่าเชื่อถือและทำซ้ำได้
 
-## Benefits of using Testcontainers
+## ประโยชน์ของการใช้ Testcontainers
 
-*   **On-demand isolated infrastructure provisioning:** No need for pre-provisioned integration testing infrastructure.
-*   **Consistent experience:** Run integration tests directly from your IDE.
-*   **Reliable test setup:** Built-in wait strategies ensure containers are fully initialized.
-*   **Advanced networking:** Automatically maps ports and handles container communication.
-*   **Automatic clean up:** Removes resources after test execution using the Ryuk sidecar container.
+*   **การเตรียม Infrastructure ที่แยกเป็นอิสระตามต้องการ:** ไม่จำเป็นต้องเตรียม Infrastructure สำหรับ Integration testing ไว้ล่วงหน้า
+*   **ประสบการณ์ที่สม่ำเสมอ:** รัน Integration tests ได้โดยตรงจาก IDE ของคุณ
+*   **การตั้งค่าการทดสอบที่เชื่อถือได้:** มี Wait strategies ในตัวเพื่อให้แน่ใจว่า Container ถูกเตรียมพร้อมสมบูรณ์แล้ว
+*   **เครือข่ายขั้นสูง:** Map ports โดยอัตโนมัติและจัดการการสื่อสารระหว่าง Container
+*   **การทำความสะอาดอัตโนมัติ:** ลบทรัพยากรหลังจากจบการทดสอบโดยใช้ Ryuk sidecar container
 
-## Differences with Docker and Docker Compose
+## ความแตกต่างกับ Docker และ Docker Compose
 
-While Docker and Docker Compose can spin up dependencies, they often require manual management of port conflicts and wait strategies. Testcontainers handles these complexities programmatically, providing a more robust and developer-friendly experience.
+แม้ว่า Docker และ Docker Compose จะสามารถสร้าง Dependency ขึ้นมาได้ แต่บ่อยครั้งที่ต้องจัดการเรื่อง Port ชนกันและ Wait strategies ด้วยตัวเอง Testcontainers จัดการความซับซ้อนเหล่านี้ผ่านโปรแกรม มอบประสบการณ์ที่แข็งแกร่งและเป็นมิตรกับนักพัฒนามากกว่า
 
-## Supported languages
+## ภาษาที่รองรับ
 
-Testcontainers supports many popular languages, including:
+Testcontainers รองรับภาษาที่นิยมมากมาย รวมถึง:
 *   Java
 *   Go
 *   .NET
 *   Node.js
 *   Python
 *   Rust
-*   ...and more.
+*   ...และอื่นๆ
 
-## Testcontainers Workflow
+## Workflow ของ Testcontainers
 
-1.  **Before Test:** Start required services as Docker containers.
-2.  **During Test:** Run tests against these containerized services.
-3.  **After Test:** Testcontainers automatically destroys the containers.
+1.  **ก่อนการทดสอบ:** เริ่มบริการที่จำเป็นในรูปแบบ Docker containers
+2.  **ระหว่างการทดสอบ:** รันชุดทดสอบกับบริการที่อยู่ใน Container เหล่านั้น
+3.  **หลังการทดสอบ:** Testcontainers จะทำลาย Container ให้โดยอัตโนมัติ
 
-## Example: Using GenericContainer (Java)
+## ตัวอย่าง: การใช้ GenericContainer (Java)
 
 ```java
 GenericContainer container = new GenericContainer("postgres:15")
@@ -54,9 +54,9 @@ container.start();
 container.stop();
 ```
 
-## Testcontainers Modules
+## Modules ของ Testcontainers
 
-For common technologies like PostgreSQL, Kafka, or Elasticsearch, Testcontainers provides dedicated modules that simplify configuration.
+สำหรับเทคโนโลยีทั่วไปเช่น PostgreSQL, Kafka, หรือ Elasticsearch Testcontainers มี Modules เฉพาะที่ช่วยลดความยุ่งยากในการตั้งค่า
 
 ```java
 PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:15");
@@ -66,9 +66,9 @@ var jdbcUrl = postgres.getJdbcUrl();
 postgres.stop();
 ```
 
-## What's Next?
+## อะไรต่อจากนี้?
 
-Check out the [Guides](https://testcontainers.com/guides/) for hands-on experience or explore the [Modules](https://testcontainers.com/modules/) to migrate your existing tests.
+ลองดู [Guides](https://testcontainers.com/guides/) เพื่อลงมือทำจริง หรือสำรวจ [Modules](https://testcontainers.com/modules/) เพื่อย้ายชุดทดสอบเดิมของคุณมาใช้ Testcontainers
 
 ---
-*Reference: [Testcontainers Getting Started](https://testcontainers.com/getting-started/)*
+*อ้างอิง: [Testcontainers Getting Started](https://testcontainers.com/getting-started/)*
