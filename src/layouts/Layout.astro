@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import GlobalDevTools from '../components/react-query/GlobalDevTools';
 
 interface Props {
 	title: string;
@@ -36,5 +37,6 @@ const { title = "PumuPlay", description = "A Modern Future of SMEs." } = Astro.p
 	</head>
 	<body class="bg-[#f2f2f5] text-gray-900 selection:bg-primary selection:text-black">
 		<slot />
+		{ import.meta.env.DEV && <GlobalDevTools client:idle /> }
 	</body>
 </html>
