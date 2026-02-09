@@ -1,0 +1,17 @@
+# PumuPlay
+
+PumuPlay is a modern web platform designed for SMEs (Small and Medium-sized Enterprises). It focuses on providing cutting-edge automation, tailored micro SaaS solutions, and autonomous agentic agents to reduce operational overhead and unlock peak productivity.
+
+## Core Services
+
+- **Automation Workflow**: Automate daily tasks to reduce operational costs and streamline business processes.
+- **AI Agentic Agents**: Intelligent agents providing support across social media platforms (Facebook, Line) and integrated websites.
+- **Micro SaaS**: Small-scale software solutions helping businesses run smoother, reduce costs, and improve productivity.
+- **Meta Programming**: Efficient development support for Micro SaaS platforms.
+
+## Contact Information
+
+- **Website**: https://pumuplay.com
+- **X (Twitter)**: https://x.com/pumuplay
+- **GitHub**: https://github.com/pumuplay
+- **Contact Form**: https://pumuplay.com/#contact
