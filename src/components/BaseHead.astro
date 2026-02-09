@@ -47,6 +47,8 @@ const ogImageUrl = typeof image === 'string'
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="author" content="PumuPlay" />
+<meta name="keywords" content="automation, micro saas, ai agents, agentic ai, software development, SMEs, workflow automation" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -54,6 +56,7 @@ const ogImageUrl = typeof image === 'string'
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImageUrl} />
+<meta property="og:site_name" content="PumuPlay" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -61,3 +64,24 @@ const ogImageUrl = typeof image === 'string'
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImageUrl} />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PumuPlay",
+  "url": Astro.site,
+  "logo": new URL("/logo.png", Astro.site).toString(),
+  "description": "PumuPlay provides cutting-edge automation, tailored micro SaaS solutions, and autonomous agentic agents for SMEs.",
+  "sameAs": [
+    "https://x.com/pumuplay",
+    "https://github.com/pumuplay"
+  ]
+})} />
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "PumuPlay",
+  "url": Astro.site
+})} />
