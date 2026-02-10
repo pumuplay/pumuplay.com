@@ -88,29 +88,27 @@ import { Send } from 'lucide-react';
     const resetButton = document.getElementById('reset-form');
 
     if (form && successMessage && submitButton && buttonText) {
-        form.addEventListener('submit', async (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
-
-            // Set loading state
-            submitButton.disabled = true;
-            if (buttonText) buttonText.textContent = 'Sending...';
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
 
-            // Log for debug (as requested to handle by JS, this shows it's working)
-            console.log('Form submission:', data);
+            const recipient = 'hello@pumuplay.com';
+            const subject = encodeURIComponent(data.subject as string);
+            const body = encodeURIComponent(
+                `From: ${data.email}\n\nMessage:\n${data.description}`
+            );
 
-            // Simulate a delay for the "sending" feel
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+            // Open 3rd party mail client
+            window.location.href = mailtoLink;
 
             // Hide form and show success message
             form.classList.add('hidden');
             successMessage.classList.remove('hidden');
 
-            // Reset button state for next time
-            submitButton.disabled = false;
-            if (buttonText) buttonText.textContent = 'Send Message';
             form.reset();
         });
     }
